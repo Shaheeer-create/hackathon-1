@@ -208,3 +208,6 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Qwen Added Memories
+- Repository at E:\quarter4\hackathon-1 has no configured Git remotes. Need to add remote before pushing changes and creating PR.
