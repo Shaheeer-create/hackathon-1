@@ -1,55 +1,100 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: N/A → 1.0.0 (initial constitution)
+- Added sections: Core Principles (6), Technology Stack, Functional Requirements, Constraints, Quality & Validation
+- Templates requiring updates: N/A (initial creation)
+- Modified principles: N/A
+- Removed sections: N/A
+- Follow-up TODOs: None
+-->
+
+# AI-Native Book Platform Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Accuracy
+All claims must be traceable to reliable sources. No hallucinated APIs or features are allowed. All content must be fact-checked and verified before inclusion.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Clarity
+Content must be written for a Computer Science and software engineering audience with a writing level of Flesch-Kincaid Grade 10–12. Technical concepts should be explained clearly and concisely.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. AI-Native Design
+Content must be structured for retrieval and embeddings. All book content should be optimized for semantic chunking and retrieval by the RAG system.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Personalization
+User background and preferences must influence content delivery and chatbot responses. The system should adapt to user's software and hardware experience levels.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Reproducibility
+Architecture and pipelines must be fully explainable and reproducible. All processes should be documented with clear steps for others to follow.
 
-### [PRINCIPLE_6_NAME]
+### VI. Source Integration
+All content must be properly cited using APA citation style. External sources should be official documentation and trusted technical sources.
 
+## Technology Stack
 
-[PRINCIPLE__DESCRIPTION]
+- Docs: Docusaurus
+- Backend: FastAPI
+- Auth: Better Auth
+- RAG:
+  - OpenAI Agents / ChatKit SDKs
+  - Qdrant Cloud (Free Tier)
+  - Neon Serverless Postgres
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Functional Requirements
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Book
+- Modular chapters that can be retrieved independently
+- Content optimized for semantic chunking
+- Each section retrievable independently for the RAG system
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### RAG Chatbot
+- Embedded in book UI
+- Answers from entire book or from user-selected text only
+- No answers outside retrieved context
+- Tested against predefined queries
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Authentication & Personalization
+- Signup/Signin via Better Auth
+- Collect user experience levels at signup (software and hardware)
+- Use profile data to personalize chatbot responses
+- Secure auth flows required
+
+### Translation (Urdu)
+- Translate to Urdu button at start of each chapter
+- Available for logged-in users only
+- Original English content remains unchanged
+- Translation does not alter embeddings
+
+## Constraints
+- Use free tiers where specified (Qdrant Cloud, Neon Serverless Postgres)
+- Target low-latency retrieval (<2s)
+- Avoid vendor lock-in beyond defined stack
+- Clearly indicate uncertainty when context is missing
+- No hallucinated APIs or features
+
+## Quality & Validation
+- All claims must be fact-checked
+- RAG system tested against predefined queries
+- Secure auth flows implemented
+- Clean, accessible UI required
+- Architecture and implementation must follow documentation requirements
+
+## Documentation Required
+- Architecture diagram
+- Folder structure documentation
+- RAG pipeline explanation
+- Environment variables documentation
+- Deployment notes
+
+## Success Criteria
+- Fully functional Docusaurus book
+- Accurate RAG chatbot responses
+- Personalized user experience
+- Working Urdu translation per chapter
+- No critical security or factual issues
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices. All amendments must be documented with approval and migration plans. All PRs and reviews must verify compliance with these principles. All development must follow the documented architecture and technology stack.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-27 | **Last Amended**: 2025-12-27
