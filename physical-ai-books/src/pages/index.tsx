@@ -11,18 +11,32 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx(styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+        <div className={styles.heroContent}>
+          <div className={styles.heroText}>
+            <Heading as="h1" className={clsx('hero__title', styles.fadeInUp)}>
+              {siteConfig.title}
+            </Heading>
+            <p className={clsx('hero__subtitle', styles.fadeInUp, styles.delay1)}>
+              {siteConfig.tagline}
+            </p>
+            <div className={clsx(styles.buttons, styles.fadeInUp, styles.delay2)}>
+              <Link
+                className="button button--primary button--lg"
+                to="/docs/intro">
+                Get Started - 5min ⏱️
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/module-1-ros2/chapter-1-architecture">
+                Start Learning
+              </Link>
+            </div>
+          </div>
+          <div className={clsx(styles.heroImage, styles.fadeIn, styles.delay1)}>
+            <div className={styles.robotIllustration}></div>
+          </div>
         </div>
       </div>
     </header>
@@ -33,8 +47,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`Welcome to ${siteConfig.title}`}
+      description="Building Autonomous Humanoid Robots with ROS 2, Simulation, and LLMs">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

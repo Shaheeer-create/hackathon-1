@@ -1,113 +1,63 @@
-# Research: Physical AI & Humanoid Robotics (Docusaurus Book)
+# Research: Styling & Animation for Docusaurus Book (Tailwind + Custom CSS)
 
-## Research Summary
+## Overview
+This research document outlines the technical decisions and best practices for implementing styling and animations in the Docusaurus-based Physical AI & Humanoid Robotics book.
 
-This document captures the research findings for the Physical AI & Humanoid Robotics Docusaurus Book project. The research addresses the key decisions needing documentation identified in the planning phase.
-
-## Key Decisions & Rationale
-
-### 1. Simulation Stack Decision
-
-**Decision**: Use Gazebo for physics simulation with optional Unity integration for high-fidelity rendering
-
-**Rationale**: 
-- Gazebo is the standard simulation environment for ROS 2 with extensive documentation and community support
-- Gazebo Garden provides advanced physics simulation capabilities needed for humanoid robotics
-- Unity integration can be added later for photorealistic rendering but is not essential for core functionality
-- This approach balances simplicity (single primary simulator) with the ability to add realism later
+## Decision: Styling Method - Tailwind + Custom CSS
+**Rationale**: Using both Tailwind CSS and custom CSS provides the best balance of rapid development (via Tailwind's utility classes) and fine-grained control (via custom CSS). Tailwind handles common styling patterns efficiently, while custom CSS allows for specific design requirements that may not be easily achievable with utility classes alone.
 
 **Alternatives considered**:
-- Gazebo + Unity combination: Provides both physics accuracy and visual realism but increases complexity
-- Isaac Sim only: NVIDIA's solution but may be too specialized for general robotics education
-- Custom simulation: Too complex and time-consuming for this project
+- Tailwind-only: Would limit fine-grained control over complex styling requirements
+- Custom CSS-only: Would require more time to implement common patterns and reduce consistency
 
-### 2. AI Integration Method
-
-**Decision**: Implement LLM planner layer that translates high-level commands to ROS 2 actions
-
-**Rationale**:
-- Provides the flexibility to interpret natural language commands while maintaining ROS 2's structured communication
-- Allows for safety validation between LLM output and actual robot commands
-- Enables complex task planning while preserving determinism in robot execution
-- Follows the emerging pattern of AI "brain" layers that orchestrate traditional robotics systems
+## Decision: Animation Approach - Pure CSS
+**Rationale**: Pure CSS animations are preferred over JavaScript-based solutions like Framer Motion for this documentation site because they offer better performance, smaller bundle size, and are more appropriate for the subtle animations needed in a documentation context. CSS animations are also more performant as they can be hardware-accelerated.
 
 **Alternatives considered**:
-- Direct ROS nodes: More deterministic but less flexible for natural language processing
-- Pure LLM control: More flexible but potentially unsafe and unpredictable
+- Framer Motion: More expressive but would add unnecessary JavaScript overhead for a documentation site
+- JavaScript animations: More complex and potentially less performant than CSS animations
 
-### 3. Navigation Approach
-
-**Decision**: Use Nav2 navigation stack with optional Isaac ROS acceleration components
-
-**Rationale**:
-- Nav2 is the standard ROS 2 navigation framework with extensive documentation and community support
-- Isaac ROS acceleration components can be integrated for performance improvements without changing the fundamental architecture
-- Provides a proven navigation solution that works with simulated and real robots
-- Maintains compatibility with ROS 2 ecosystem
+## Decision: Theme Mode - Dark-first
+**Rationale**: A dark-first theme aligns with the futuristic/robotics/NVIDIA-style design language requested in the specification. It also provides better readability for technical content in various lighting conditions and matches the aesthetic preferences of the target audience (robotics and AI developers).
 
 **Alternatives considered**:
-- Custom navigation: More control but significantly more development time
-- Isaac-specific navigation: Potentially better performance but limits hardware compatibility
+- Light-first: More traditional but doesn't match the requested futuristic aesthetic
+- System preference adaptive: More complex to implement initially, but could be added later
 
-### 4. Code Strategy
-
-**Decision**: Use external GitHub repositories with links from documentation
-
-**Rationale**:
-- Keeps documentation focused on concepts rather than implementation details
-- Allows for proper versioning and maintenance of code examples
-- Enables readers to run, modify, and experiment with complete working examples
-- Follows best practices for technical documentation
+## Decision: Scope of Tailwind - Global Usage
+**Rationale**: Using Tailwind globally across the site ensures consistency in styling and spacing throughout all modules and chapters. This approach maintains a unified design language across the entire documentation set.
 
 **Alternatives considered**:
-- Inline code: Better readability but harder to maintain and test
-- Downloadable archives: Less convenient for updates and collaboration
+- MDX components only: Would limit consistency and require maintaining multiple styling approaches
 
-## Architecture Sketch
+## Docusaurus + Tailwind Integration
+**Best Practices**:
+- Use Docusaurus' built-in CSS customization capabilities
+- Configure Tailwind with a custom config that includes Docusaurus-specific design tokens
+- Leverage Docusaurus' class override capabilities for theming
+- Use Tailwind's `@apply` directive to create component classes from utility classes
 
-The end-to-end Physical AI stack consists of:
+## Accessibility Considerations
+- Respect user's reduced-motion preferences using `@media (prefers-reduced-motion: reduce)`
+- Maintain sufficient color contrast for accessibility (WCAG AA compliance)
+- Ensure all interactive elements have appropriate focus states
+- Use semantic HTML elements where possible
 
-```
-Voice Command → LLM/Whisper → Task Planner → ROS 2 Actions → Robot Simulation
-     ↓              ↓              ↓              ↓              ↓
-  Speech-to-Text  NLU/Intent   Action Seq.   ROS Graph    Gazebo/Unity
-```
+## Performance Considerations
+- Minimize custom CSS to reduce bundle size
+- Use CSS containment where appropriate to improve rendering performance
+- Optimize animations to use transform and opacity properties for better performance
+- Implement proper loading strategies for any custom fonts or assets
 
-## Technical Architecture
+## Browser Compatibility
+- Target browsers that support CSS Grid and Flexbox as specified in the feature requirements
+- Use feature queries (`@supports`) where needed for progressive enhancement
+- Test animations and styling across different browsers to ensure consistent experience
 
-### ROS 2 Components
-- Nodes for robot control, sensors, and AI integration
-- Topics for sensor data (LiDAR, IMU, cameras) and control commands
-- Services for high-level actions and queries
-- Actions for long-running tasks like navigation
-
-### Simulation Environment
-- Gazebo for physics simulation and sensor modeling
-- URDF models for robot representation
-- World files for environment definition
-- Sensor plugins for realistic data generation
-
-### AI Integration
-- OpenAI API for language understanding and planning
-- Whisper API for voice command processing
-- Custom planner to translate high-level goals to ROS 2 actions
-- Safety validator to ensure safe robot behavior
-
-## Validation Strategy
-
-The system will be validated through:
-- ROS 2 graph analysis to ensure proper communication
-- Simulation tests to verify sensor data validity
-- Navigation tests to confirm goal achievement without collisions
-- LLM integration tests to validate command translation
-- End-to-end capstone tests for multi-step autonomous tasks
-
-## Research Sources
-
-1. ROS 2 Documentation (Humble Hawksbill) - https://docs.ros.org/
-2. Gazebo Documentation - https://gazebosim.org/
-3. NVIDIA Isaac ROS Documentation - https://nvidia-isaac-ros.github.io/
-4. Nav2 Documentation - https://navigation.ros.org/
-5. Docusaurus Documentation - https://docusaurus.io/
-6. OpenAI API Documentation - https://platform.openai.com/docs/
-7. Whisper ASR Documentation - https://github.com/openai/whisper
+## Implementation Strategy
+1. Set up Tailwind CSS with PostCSS in the Docusaurus project
+2. Create a custom color palette that matches the futuristic/robotics/NVIDIA-style theme
+3. Define typography scale and spacing system using Tailwind
+4. Create custom CSS for Docusaurus component overrides
+5. Implement subtle animations for user interactions and page transitions
+6. Ensure all styling respects accessibility requirements

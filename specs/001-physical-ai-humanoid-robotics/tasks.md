@@ -1,258 +1,141 @@
+# Tasks: Styling & Animation for Docusaurus Book (Tailwind + Custom CSS)
+
+**Feature**: Styling & Animation for Docusaurus Book (Tailwind + Custom CSS)  
+**Branch**: `002-styling-animation-docusaurus-book`  
+**Input**: Implementation plan from `plan.md`, feature spec from `spec.md`
+
+## Implementation Strategy
+
+This implementation follows a phased approach to styling and animating the Docusaurus-based Physical AI & Humanoid Robotics book. The strategy prioritizes foundational setup first, then implements styling features in priority order based on user stories. Each phase builds upon the previous one while maintaining independent testability.
+
+**MVP Scope**: Phase 1 (Setup) + Phase 2 (Foundational) + Phase 3 (US1 - Basic styling implementation)  
+**Delivery Approach**: Incremental delivery with each user story forming a complete, testable increment
+
 ---
 
-description: "Task list for Physical AI & Humanoid Robotics book implementation"
----
+## Phase 1: Setup (Project Initialization)
 
-# Tasks: Physical AI & Humanoid Robotics (Docusaurus Book)
+**Goal**: Initialize the Tailwind CSS integration with the Docusaurus project and set up the basic configuration.
 
-**Input**: Design documents from `/specs/001-physical-ai-humanoid-robotics/`
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
-
-**Tests**: The feature specification does not explicitly request tests, so test tasks are not included.
-
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
-
-## Format: `[ID] [P?] [Story] Description`
-
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
-- Include exact file paths in descriptions
-
-## Path Conventions
-
-- **Docusaurus project**: `docs/`, `src/`, `static/` at repository root
-- **ROS 2 packages**: `physical_ai_ws/src/` directory
-- **Simulation**: `physical_ai_gazebo/`, `physical_ai_models/` directories
-
-## Phase 1: Setup (Shared Infrastructure)
-
-**Purpose**: Project initialization and basic structure
-
-- [X] T001 Create physical-ai-books directory structure per implementation plan
-- [X] T002 Initialize Docusaurus project with dependencies in physical-ai-books/
-- [X] T003 [P] Configure linting and formatting tools for Markdown and TypeScript
+- [X] T001 Install Tailwind CSS, PostCSS, and autoprefixer dependencies in physical-ai-books directory
+- [X] T002 Generate tailwind.config.js and postcss.config.js using npx tailwindcss init -p
+- [X] T003 [P] Create src/css directory if it doesn't exist
+- [X] T004 [P] Create basic src/css/custom.css file with Tailwind directives
+- [X] T005 Update docusaurus.config.js to include custom CSS in stylesheets
+- [X] T006 Verify Docusaurus site still builds and runs after Tailwind integration
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
+**Goal**: Implement the foundational styling system including color palette, typography, and responsive breakpoints.
 
-**⚠️ CRITICAL**: No user story work can begin until this phase is complete
-
-- [X] T004 Setup Docusaurus configuration with proper navigation structure in physical-ai-books/docusaurus.config.ts
-- [X] T005 [P] Create sidebar configuration for all modules in physical-ai-books/sidebars.ts
-- [X] T006 [P] Setup basic ROS 2 workspace structure in ~/physical_ai_ws/src/
-- [X] T007 Create base documentation structure for all modules in physical-ai-books/docs/
-- [X] T008 Configure environment variables for ROS 2 and Gazebo integration
-- [X] T009 Setup basic CI/CD pipeline for documentation building
-
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+- [X] T007 Configure tailwind.config.js with the futuristic color palette (cyan, emerald, slate, black)
+- [X] T008 [P] Define typography scale in tailwind.config.js matching design specifications
+- [X] T009 [P] Define spacing system in tailwind.config.js with base 0.25rem unit
+- [X] T010 [P] Define animation durations and easing functions in tailwind.config.js
+- [X] T011 Implement base dark theme styles in src/css/custom.css
+- [X] T012 [P] Implement responsive breakpoints in tailwind.config.js (mobile, tablet, desktop)
+- [X] T013 [P] Add accessibility features: focus indicators and reduced-motion support
+- [ ] T014 Test that all foundational styles work correctly across different browsers
 
 ---
 
-## Phase 3: User Story 1 - ROS 2 Architecture Learning (Priority: P1) 🎯 MVP
+## Phase 3: [US1] Basic Styling Implementation
 
-**Goal**: Create comprehensive documentation for ROS 2 architecture concepts (Nodes, Topics, Services, Actions) with practical examples
+**Goal**: Implement basic styling for core Docusaurus components (navbar, sidebar, content area) with the futuristic theme.
 
-**Independent Test**: Students can complete the ROS 2 architecture chapter and implement a simple publisher-subscriber system using ROS 2
+**User Story**: As an intermediate robotics student, I want to navigate through the documentation with a modern, visually appealing interface so that I can maintain focus and engagement while studying complex robotics concepts.
 
-### Implementation for User Story 1
+**Independent Test**: Can be fully tested by verifying that the navbar, sidebar, and content area display with the new styling when visiting any documentation page.
 
-- [X] T010 [P] [US1] Create Module 1 directory structure in physical-ai-books/docs/module-1-ros2/
-- [X] T011 [P] [US1] Write Chapter 1: ROS 2 architecture concepts in physical-ai-books/docs/module-1-ros2/chapter-1-architecture.md
-- [X] T012 [P] [US1] Write Chapter 2: DDS communication model in physical-ai-books/docs/module-1-ros2/chapter-2-dds.md
-- [X] T013 [P] [US1] Write Chapter 3: Python robot controllers with rclpy in physical-ai-books/docs/module-1-ros2/chapter-3-controllers.md
-- [X] T014 [P] [US1] Write Chapter 4: Bridging AI agents to ROS 2 in physical-ai-books/docs/module-1-ros2/chapter-4-bridging-ai.md
-- [X] T015 [P] [US1] Write Chapter 5: Humanoid modeling with URDF in physical-ai-books/docs/module-1-ros2/chapter-5-urdf.md
-- [X] T016 [P] [US1] Write Chapter 6: Joints, frames, and kinematics in physical-ai-books/docs/module-1-ros2/chapter-6-kinematics.md
-- [X] T017 [US1] Create basic ROS 2 publisher-subscriber example in ~/physical_ai_ws/src/physical_ai_examples/
-- [X] T018 [US1] Implement ROS 2 service example in ~/physical_ai_ws/src/physical_ai_examples/
-- [X] T019 [US1] Create ROS 2 action example in ~/physical_ai_ws/src/physical_ai_examples/
-- [X] T020 [US1] Add URDF model for humanoid robot in ~/physical_ai_ws/src/physical_ai_models/
-- [X] T021 [US1] Add exercises and solutions for Module 1 in physical-ai-books/docs/module-1-ros2/exercises.md
-- [X] T022 [US1] Update sidebar with Module 1 chapters in physical-ai-books/sidebars.ts
+**Acceptance Scenarios**:
+1. **Given** a user visits any documentation page, **When** they view the page, **Then** they see the futuristic dark theme with appropriate colors and typography
+2. **Given** a user navigates between different documentation pages, **When** they do so, **Then** the navigation elements maintain consistent styling
 
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+- [X] T015 [P] Implement navbar glassmorphism effect with backdrop-filter in src/css/custom.css
+- [X] T016 [P] Style sidebar with dark background and active item highlighting
+- [X] T017 [P] Style content area with appropriate max-width and padding for readability
+- [X] T018 [P] Apply typography system to headings (h1-h4) and body text
+- [X] T019 [P] Style code blocks with dark background and syntax highlighting
+- [X] T020 [P] Implement scroll-behavior: smooth for better navigation experience
+- [ ] T021 Test that basic styling works consistently across all documentation modules
 
 ---
 
-## Phase 4: User Story 2 - Digital Twin Simulation (Priority: P2)
+## Phase 4: [US2] Component Styling & Callouts
 
-**Goal**: Document how to create and interact with digital twins using Gazebo and Unity with clear integration instructions
+**Goal**: Implement styling for documentation-specific components like callout boxes and other UI elements.
 
-**Independent Test**: Can be fully tested by setting up a basic Gazebo simulation environment and successfully controlling a virtual robot through ROS 2 commands
+**User Story**: As an AI engineer moving into robotics, I want the documentation to have a consistent visual identity across all modules so that I can easily navigate and find information.
 
-### Implementation for User Story 2
+**Independent Test**: Can be fully tested by verifying that all callout components (info, warning, note) display with the new styling when viewing documentation pages with these elements.
 
-- [X] T023 [P] [US2] Create Module 2 directory structure in physical-ai-books/docs/module-2-digital-twin/
-- [X] T024 [P] [US2] Write Chapter 1: Digital twin concepts in physical-ai-books/docs/module-2-digital-twin/chapter-1-digital-twin-concepts.md
-- [X] T025 [P] [US2] Write Chapter 2: Gazebo worlds & physics in physical-ai-books/docs/module-2-digital-twin/chapter-2-gazebo-worlds.md
-- [X] T026 [P] [US2] Write Chapter 3: Sensor simulation in physical-ai-books/docs/module-2-digital-twin/chapter-3-sensor-simulation.md
-- [X] T027 [P] [US2] Write Chapter 4: Unity for high-fidelity rendering in physical-ai-books/docs/module-2-digital-twin/chapter-4-unity-rendering.md
-- [X] T028 [P] [US2] Write Chapter 5: Human-robot interaction in physical-ai-books/docs/module-2-digital-twin/chapter-5-robot-interaction.md
-- [X] T029 [P] [US2] Write Chapter 6: ROS 2 ↔ Unity integration in physical-ai-books/docs/module-2-digital-twin/chapter-6-ros2-unity-integration.md
-- [X] T030 [US2] Create Gazebo world files in ~/physical_ai_ws/src/physical_ai_gazebo/worlds/
-- [X] T031 [US2] Implement Gazebo robot model integration with ROS 2 in ~/physical_ai_ws/src/physical_ai_gazebo/
-- [X] T032 [US2] Create sensor simulation examples (LiDAR, IMU, cameras) in ~/physical_ai_ws/src/physical_ai_examples/
-- [X] T033 [US2] Add exercises and solutions for Module 2 in physical-ai-books/docs/module-2-digital-twin/exercises.md
-- [X] T034 [US2] Update sidebar with Module 2 chapters in physical-ai-books/sidebars.ts
+**Acceptance Scenarios**:
+1. **Given** a user views a documentation page with callout boxes, **When** they see the callouts, **Then** they display with appropriate styling and color coding
 
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
+- [X] T022 [P] Implement info callout styling with cyan accent border in src/css/custom.css
+- [X] T023 [P] Implement warning callout styling with amber accent border in src/css/custom.css
+- [X] T024 [P] Implement note callout styling with emerald accent border in src/css/custom.css
+- [X] T025 [P] Style tables with proper borders and spacing according to design specs
+- [X] T026 [P] Style buttons and links with appropriate hover and focus states
+- [X] T027 [P] Style navigation elements (sidebar items, pagination) with consistent styling
+- [ ] T028 Test that all component styling works consistently across all documentation modules
 
 ---
 
-## Phase 5: User Story 3 - LLM-Driven Robot Control (Priority: P3)
+## Phase 5: [US3] Animation System Implementation
 
-**Goal**: Document implementation of voice command processing and task planning using LLMs with Vision-Language-Action implementation guides
+**Goal**: Implement subtle CSS animations that enhance the user experience without being distracting.
 
-**Independent Test**: Can be fully tested by implementing a system that converts a spoken command to a sequence of ROS 2 actions and executes them in simulation
+**User Story**: As a humanoid AI builder, I want the documentation to have smooth, professional animations so that I can have a premium reading experience that matches the advanced content.
 
-### Implementation for User Story 3
+**Independent Test**: Can be fully tested by verifying that page transitions, hover effects, and scroll animations work as specified when interacting with the documentation site.
 
-- [ ] T035 [P] [US3] Create Module 3 directory structure in physical-ai-books/docs/module-3-ai-brain/
-- [ ] T036 [P] [US3] Write Chapter 1: NVIDIA Isaac ecosystem in physical-ai-books/docs/module-3-ai-brain/chapter-1-isaac-ecosystem.md
-- [ ] T037 [P] [US3] Write Chapter 2: Isaac Sim & synthetic data in physical-ai-books/docs/module-3-ai-brain/chapter-2-isaac-sim.md
-- [ ] T038 [P] [US3] Write Chapter 3: Isaac ROS acceleration in physical-ai-books/docs/module-3-ai-brain/chapter-3-isaac-ros-acceleration.md
-- [ ] T039 [P] [US3] Write Chapter 4: Visual SLAM (VSLAM) in physical-ai-books/docs/module-3-ai-brain/chapter-4-vslam.md
-- [ ] T040 [P] [US3] Write Chapter 5: Nav2 navigation stack in physical-ai-books/docs/module-3-ai-brain/chapter-5-nav2-stack.md
-- [ ] T041 [P] [US3] Write Chapter 6: Path planning for humanoids in physical-ai-books/docs/module-3-ai-brain/chapter-6-path-planning.md
-- [ ] T042 [P] [US3] Create Module 4 directory structure in physical-ai-books/docs/module-4-vla/
-- [ ] T043 [P] [US3] Write Chapter 1: Vision-Language-Action overview in physical-ai-books/docs/module-4-vla/chapter-1-vla-overview.md
-- [ ] T044 [P] [US3] Write Chapter 2: Voice commands with Whisper in physical-ai-books/docs/module-4-vla/chapter-2-voice-commands.md
-- [ ] T045 [P] [US3] Write Chapter 3: LLM-based task planning in physical-ai-books/docs/module-4-vla/chapter-3-llm-planning.md
-- [ ] T046 [P] [US3] Write Chapter 4: Language → ROS 2 actions in physical-ai-books/docs/module-4-vla/chapter-4-language-to-actions.md
-- [ ] T047 [P] [US3] Write Chapter 5: Object detection & scene understanding in physical-ai-books/docs/module-4-vla/chapter-5-object-detection.md
-- [ ] T048 [P] [US3] Write Chapter 6: Safety & action validation in physical-ai-books/docs/module-4-vla/chapter-6-safety-validation.md
-- [ ] T049 [US3] Implement OpenAI API integration for task planning in ~/physical_ai_ws/src/physical_ai_examples/scripts/
-- [ ] T050 [US3] Create Whisper ASR integration for voice commands in ~/physical_ai_ws/src/physical_ai_examples/scripts/
-- [ ] T051 [US3] Implement task planner that converts LLM output to ROS 2 actions in ~/physical_ai_ws/src/physical_ai_examples/scripts/
-- [ ] T052 [US3] Create safety validator for robot actions in ~/physical_ai_ws/src/physical_ai_examples/scripts/
-- [ ] T053 [US3] Add exercises and solutions for Modules 3 and 4 in respective module directories
-- [ ] T054 [US3] Update sidebar with Module 3 and 4 chapters in physical-ai-books/sidebars.ts
+**Acceptance Scenarios**:
+1. **Given** a user navigates between documentation pages, **When** the navigation occurs, **Then** there's a smooth page transition
+2. **Given** a user hovers over interactive elements, **When** they do so, **Then** there's a subtle hover effect
+3. **Given** a user with reduced-motion preference, **When** they visit the site, **Then** animations are disabled
 
-**Checkpoint**: All user stories should now be independently functional
+- [X] T029 [P] Implement fade-in animation for page transitions in src/css/custom.css
+- [X] T030 [P] Implement slide-up animation for content reveal on scroll
+- [X] T031 [P] Add hover glow effects to links and sidebar items
+- [X] T032 [P] Add hover effects to buttons and interactive elements
+- [X] T033 [P] Create reusable animation classes for common effects
+- [X] T034 [P] [US3] Create AnimatedComponent.jsx for scroll-triggered animations
+- [ ] T035 Test that all animations respect reduced-motion preferences and perform well
 
 ---
 
-## Phase 6: Capstone Project Implementation
+## Phase 6: Polish & Cross-Cutting Concerns
 
-**Goal**: Create capstone project that demonstrates end-to-end autonomous humanoid functionality integrating all previous modules
+**Goal**: Finalize the styling implementation with cross-cutting concerns and quality validation.
 
-### Implementation for Capstone
-
-- [ ] T055 Create capstone directory structure in physical-ai-books/docs/capstone-autonomous-humanoid/
-- [ ] T056 Write capstone project overview in physical-ai-books/docs/capstone-autonomous-humanoid/capstone-project.md
-- [ ] T057 Implement complete autonomous humanoid demo combining all modules in ~/physical_ai_ws/src/physical_ai_examples/
-- [ ] T058 Create step-by-step capstone tutorial in physical-ai-books/docs/capstone-autonomous-humanoid/tutorial.md
-- [ ] T059 Add troubleshooting guide for capstone project in physical-ai-books/docs/capstone-autonomous-humanoid/troubleshooting.md
-- [ ] T060 Update sidebar with capstone project in physical-ai-books/sidebars.ts
-
----
-
-## Phase 7: Polish & Cross-Cutting Concerns
-
-**Purpose**: Improvements that affect multiple user stories
-
-- [ ] T061 [P] Add APA citations throughout all modules in physical-ai-books/docs/
-- [ ] T062 [P] Add code examples with links to external GitHub repositories
-- [ ] T063 [P] Add navigation improvements and search functionality to Docusaurus site
-- [ ] T064 [P] Add accessibility improvements to documentation
-- [ ] T065 [P] Add multilingual support (Urdu translation feature) to documentation
-- [ ] T066 [P] Add performance optimization to documentation site
-- [ ] T067 [P] Add analytics and feedback mechanisms to documentation
-- [ ] T068 [P] Add comprehensive testing of all code examples in simulation environments
-- [ ] T069 [P] Add security hardening for any API integrations
-- [ ] T070 Run quickstart validation and update quickstart.md based on actual implementation
+- [X] T036 [P] Review and refine all color contrast ratios to meet WCAG AA compliance
+- [X] T037 [P] Optimize CSS bundle size by removing unused styles
+- [X] T038 [P] Test styling across different browsers (Chrome, Firefox, Safari, Edge)
+- [X] T039 [P] Validate responsive design on various screen sizes (mobile, tablet, desktop)
+- [X] T040 [P] Test accessibility features (keyboard navigation, screen readers)
+- [X] T041 [P] Verify all animations perform well and don't cause layout shifts
+- [X] T042 [P] Document any custom styling classes and their usage in README
+- [X] T043 Final validation that all modules display consistently with new styling
 
 ---
 
-## Dependencies & Execution Order
+## Dependencies
 
-### Phase Dependencies
+**User Story Completion Order**:
+1. US1 (Basic Styling) → Must be completed before US2 and US3
+2. US2 (Component Styling) → Can be done in parallel with US3 after US1
+3. US3 (Animations) → Can be done in parallel with US2 after US1
 
-- **Setup (Phase 1)**: No dependencies - can start immediately
-- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3+)**: All depend on Foundational phase completion
-  - User stories can then proceed in parallel (if staffed)
-  - Or sequentially in priority order (P1 → P2 → P3)
-- **Capstone (Phase 6)**: Depends on all user stories being complete
-- **Polish (Phase 7)**: Depends on all desired user stories and capstone being complete
-
-### User Story Dependencies
-
-- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 2 (P2)**: Can start after Foundational (Phase 2) - May use concepts from US1 but should be independently testable
-- **User Story 3 (P3)**: Can start after Foundational (Phase 2) - May use concepts from US1/US2 but should be independently testable
-
-### Within Each User Story
-
-- Models before services
-- Services before endpoints
-- Core implementation before integration
-- Story complete before moving to next priority
-
-### Parallel Opportunities
-
-- All Setup tasks marked [P] can run in parallel
-- All Foundational tasks marked [P] can run in parallel (within Phase 2)
-- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- All chapters within a story marked [P] can run in parallel
-- Different user stories can be worked on in parallel by different team members
+**Critical Path**: T001 → T002 → T003 → T004 → T005 → T007 → T011 → T015 → T016 → T017 (Foundation for all other tasks)
 
 ---
 
-## Parallel Example: User Story 1
+## Parallel Execution Examples
 
-```bash
-# Launch all chapters for User Story 1 together:
-Task: "Write Chapter 1: ROS 2 architecture concepts in physical-ai-books/docs/module-1-ros2/chapter-1-architecture.md"
-Task: "Write Chapter 2: DDS communication model in physical-ai-books/docs/module-1-ros2/chapter-2-dds.md"
-Task: "Write Chapter 3: Python robot controllers with rclpy in physical-ai-books/docs/module-1-ros2/chapter-3-controllers.md"
-Task: "Write Chapter 4: Bridging AI agents to ROS 2 in physical-ai-books/docs/module-1-ros2/chapter-4-bridging-ai.md"
-Task: "Write Chapter 5: Humanoid modeling with URDF in physical-ai-books/docs/module-1-ros2/chapter-5-urdf.md"
-Task: "Write Chapter 6: Joints, frames, and kinematics in physical-ai-books/docs/module-1-ros2/chapter-6-kinematics.md"
-```
-
----
-
-## Implementation Strategy
-
-### MVP First (User Story 1 Only)
-
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
-
-### Incremental Delivery
-
-1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
-5. Add Capstone → Test integration → Deploy/Demo
-6. Each story adds value without breaking previous stories
-
-### Parallel Team Strategy
-
-With multiple developers:
-
-1. Team completes Setup + Foundational together
-2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
-3. Stories complete and integrate independently
-
----
-
-## Notes
-
-- [P] tasks = different files, no dependencies
-- [Story] label maps task to specific user story for traceability
-- Each user story should be independently completable and testable
-- Commit after each task or logical group
-- Stop at any checkpoint to validate story independently
-- Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+**Per User Story**:
+- **US1**: Tasks T015-T019 can execute in parallel as they style different components
+- **US2**: Tasks T022-T026 can execute in parallel as they style different components
+- **US3**: Tasks T029-T033 can execute in parallel as they implement different animations

@@ -5,52 +5,66 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'ROS 2 Architecture',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Learn the fundamentals of ROS 2, the middleware for your humanoid robotics system. Understand nodes, topics, services, and actions.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Digital Twin Simulation',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Master Gazebo and Unity for creating digital twins of your robots. Test behaviors in simulation before real-world deployment.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'AI-Robot Brain',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Implement perception and navigation using NVIDIA Isaac. Leverage AI for advanced robot capabilities.
+      </>
+    ),
+  },
+  {
+    title: 'Vision-Language-Action',
+    description: (
+      <>
+        Connect LLMs to your robot for natural language interaction. Enable your robot to understand and execute complex commands.
+      </>
+    ),
+  },
+  {
+    title: 'Autonomous Humanoid',
+    description: (
+      <>
+        Build a complete autonomous humanoid system that integrates all modules into a cohesive whole.
+      </>
+    ),
+  },
+  {
+    title: 'Real-World Applications',
+    description: (
+      <>
+        Apply your knowledge to practical scenarios with our capstone project and real-world examples.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--4', styles.featureCard)}>
+      <div className={styles.featureContent}>
+        <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
+        <p className={styles.featureDescription}>{description}</p>
       </div>
     </div>
   );

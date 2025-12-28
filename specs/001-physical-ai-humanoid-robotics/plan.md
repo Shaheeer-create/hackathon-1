@@ -1,52 +1,66 @@
-# Implementation Plan: Physical AI & Humanoid Robotics (Docusaurus Book)
+# Implementation Plan: [FEATURE]
 
-**Branch**: `001-physical-ai-humanoid-robotics` | **Date**: 2025-12-27 | **Spec**: [Link to spec.md]
-**Input**: Feature specification from `/specs/001-physical-ai-humanoid-robotics/spec.md`
+**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-This plan outlines the development of a comprehensive Docusaurus-based book on Physical AI & Humanoid Robotics. The book will cover ROS 2 architecture, simulation environments (Gazebo/Unity), NVIDIA Isaac ecosystem, and Vision-Language-Action systems. It will provide practical examples and exercises for each chapter, with a capstone project demonstrating an end-to-end autonomous humanoid system that responds to voice commands, navigates, perceives objects, and manipulates them.
+This implementation plan addresses the styling and animation requirements for the Physical AI & Humanoid Robotics Docusaurus book. The primary requirement is to create a modern, clean, animated documentation UI that feels like a premium robotics/AI textbook with a futuristic/robotics/NVIDIA-style theme.
 
-Based on research findings:
-- Simulation stack: Gazebo for physics simulation with optional Unity integration for high-fidelity rendering
-- AI integration: LLM planner layer that translates high-level commands to ROS 2 actions
-- Navigation: Nav2 navigation stack with optional Isaac ROS acceleration components
-- Code strategy: External GitHub repositories with links from documentation
+The technical approach involves integrating Tailwind CSS with the existing Docusaurus setup, implementing custom CSS overrides for theme-specific elements (navbar, sidebar, etc.), and adding subtle CSS animations that enhance the user experience. The styling will follow a dark-first color scheme with black, slate, and cyan/emerald accents, with typography optimized for textbook reading.
+
+Based on the research, we'll use a hybrid approach of Tailwind CSS for utility-first styling and custom CSS for Docusaurus component overrides. Animations will be implemented using pure CSS for better performance, and the implementation will respect accessibility requirements including reduced-motion preferences and WCAG contrast standards.
 
 ## Technical Context
 
-**Language/Version**: Python 3.11, C++ (ROS 2), JavaScript/TypeScript (Docusaurus), Markdown
-**Primary Dependencies**: ROS 2 (Humble Hawksbill), Gazebo Garden, Unity 2023.2+, NVIDIA Isaac Sim, Docusaurus 3.0+, OpenAI API, Whisper ASR
-**Storage**: N/A (Documentation-focused project with external code repositories)
-**Testing**: Manual validation of examples, automated documentation build checks, simulation environment tests
-**Target Platform**: Web-based documentation (Docusaurus), with simulation environments running on Linux/Windows
-**Project Type**: Documentation (Docusaurus-based book with code examples)
-**Performance Goals**: Fast documentation loading (<2s), responsive simulation environments, accurate voice command processing
-**Constraints**: Use free tiers where specified, maintain compatibility with ROS 2 ecosystem, ensure reproducible simulation environments
-**Scale/Scope**: Targeted at intermediate-advanced robotics students and engineers, 4 modules with multiple chapters each
+**Language/Version**: JavaScript/TypeScript, Node.js 18+
+**Primary Dependencies**: Docusaurus 2.x, Tailwind CSS 3.x, PostCSS, autoprefixer
+**Storage**: N/A (static site generation)
+**Testing**: Manual visual testing, accessibility testing with a11y tools
+**Target Platform**: Web (static site deployed to GitHub Pages or similar)
+**Project Type**: Static documentation site
+**Performance Goals**: Page load time < 2s, Core Web Vitals passing, zero layout shift during navigation
+**Constraints**: Must maintain accessibility compliance (WCAG AA), support reduced-motion preferences, CSS-first animations (no JS where possible)
+**Scale/Scope**: All modules and chapters in the Physical AI & Humanoid Robotics book (4 modules + capstone)
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-Based on the project constitution:
-- Accuracy: All claims must be traceable to reliable sources (ROS 2 documentation, NVIDIA Isaac docs, etc.)
-- Clarity: Content written for CS/software engineering audience at Grade 10-12 level
-- AI-Native Design: Content structured for retrieval and embeddings (modular chapters)
-- Personalization: Content adapts to user's experience levels (prerequisites noted)
-- Reproducibility: All processes documented with clear steps for others to follow
-- Source Integration: All content properly cited using APA citation style
+### Compliance Verification
 
-*Post-design evaluation: All constitution principles are satisfied by the planned implementation approach.*
+**Accuracy**: ✅ CSS and animation implementations will be based on verified documentation and best practices, not hallucinated features.
+
+**Clarity**: ✅ Styling and animation code will be documented with clear explanations for the target audience (intermediate to advanced robotics students and engineers).
+
+**AI-Native Design**: ✅ The styling will maintain semantic structure for proper content chunking by RAG systems.
+
+**Personalization**: ✅ The styling will be consistent across all modules to provide a uniform experience for users of different backgrounds.
+
+**Reproducibility**: ✅ All styling and animation implementations will be documented with clear steps for others to reproduce and modify.
+
+**Source Integration**: ✅ All styling techniques will be properly cited using established CSS and Tailwind documentation.
+
+### Post-Design Verification
+
+After implementing the design elements:
+
+**Performance**: ✅ CSS-first animations ensure optimal performance without JavaScript overhead.
+**Accessibility**: ✅ Implementation includes reduced-motion support and WCAG-compliant contrast ratios.
+**Reproducibility**: ✅ Quickstart guide provides clear steps for implementation and customization.
+**AI-Native Design**: ✅ Semantic HTML structure is preserved to maintain content chunking capabilities.
+
+### Gate Status: PASSED
+All constitutional requirements continue to be satisfied by the implemented approach.
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```text
-specs/001-physical-ai-humanoid-robotics/
+specs/002-styling-animation-docusaurus-book/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -55,47 +69,23 @@ specs/001-physical-ai-humanoid-robotics/
 └── tasks.md             # Phase 2 output (/sp.tasks command - NOT created by /sp.plan)
 ```
 
-### Book Structure
+### Source Code (repository root)
 
 ```text
 physical-ai-books/
-├── docs/                # Docusaurus documentation root
-│   ├── module-1-ros2/
-│   │   ├── chapter-1-architecture.md
-│   │   ├── chapter-2-dds.md
-│   │   ├── chapter-3-controllers.md
-│   │   ├── chapter-4-bridging-ai.md
-│   │   ├── chapter-5-urdf.md
-│   │   └── chapter-6-kinematics.md
-│   ├── module-2-digital-twin/
-│   │   ├── chapter-1-digital-twin-concepts.md
-│   │   ├── chapter-2-gazebo-worlds.md
-│   │   ├── chapter-3-sensor-simulation.md
-│   │   ├── chapter-4-unity-rendering.md
-│   │   ├── chapter-5-robot-interaction.md
-│   │   └── chapter-6-ros2-unity-integration.md
-│   ├── module-3-ai-brain/
-│   │   ├── chapter-1-isaac-ecosystem.md
-│   │   ├── chapter-2-isaac-sim.md
-│   │   ├── chapter-3-isaac-ros-acceleration.md
-│   │   ├── chapter-4-vslam.md
-│   │   ├── chapter-5-nav2-stack.md
-│   │   └── chapter-6-path-planning.md
-│   ├── module-4-vla/
-│   │   ├── chapter-1-vla-overview.md
-│   │   ├── chapter-2-voice-commands.md
-│   │   ├── chapter-3-llm-planning.md
-│   │   ├── chapter-4-language-to-actions.md
-│   │   ├── chapter-5-object-detection.md
-│   │   └── chapter-6-safety-validation.md
-│   └── capstone-autonomous-humanoid/
-│       └── capstone-project.md
-├── docusaurus.config.js # Docusaurus configuration
-├── package.json         # Node.js dependencies
-└── README.md            # Project overview
+├── src/
+│   ├── components/
+│   │   └── [custom Docusaurus components]
+│   └── css/
+│       ├── custom.css      # Custom Docusaurus overrides
+│       └── animations.css  # Animation styles
+├── docusaurus.config.js   # Docusaurus configuration
+├── sidebars.js            # Navigation configuration
+├── package.json           # Dependencies including Tailwind
+└── postcss.config.js      # PostCSS configuration for Tailwind
 ```
 
-**Structure Decision**: The book will follow a modular structure with 4 main modules, each containing multiple chapters. The capstone project will integrate all concepts. The Docusaurus framework will provide the documentation platform with proper navigation and search capabilities.
+**Structure Decision**: The styling and animation implementation will be contained within the physical-ai-books directory, which is the Docusaurus project for the Physical AI & Humanoid Robotics book. This follows the existing architecture where the documentation site is separate from the specification files.
 
 ## Complexity Tracking
 
@@ -103,4 +93,5 @@ physical-ai-books/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| (None) | (None) | (None) |
+| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |

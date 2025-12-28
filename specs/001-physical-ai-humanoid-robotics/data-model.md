@@ -1,144 +1,89 @@
-# Data Model: Physical AI & Humanoid Robotics (Docusaurus Book)
+# Design Elements: Styling & Animation for Docusaurus Book
 
-## Overview
+## Color System
 
-This document defines the key data models and entities for the Physical AI & Humanoid Robotics Docusaurus Book project. These entities represent the core concepts that will be explained and used throughout the book.
+### Primary Colors
+- **Background**: `#000000` (black) - Main background for dark theme
+- **Surface**: `#1e293b` (slate-800 equivalent) - Content backgrounds
+- **Text Primary**: `#f1f5f9` (slate-100) - Main text color
+- **Text Secondary**: `#94a3b8` (slate-400) - Secondary text
 
-## Core Entities
+### Accent Colors
+- **Primary Accent**: `#06b6d4` (cyan-500) - Links, highlights
+- **Secondary Accent**: `#10b981` (emerald-500) - Success states, highlights
+- **Warning**: `#f59e0b` (amber-500) - Warning states
+- **Error**: `#ef4444` (red-500) - Error states
 
-### 1. Module
-Represents a major section of the book containing related chapters.
+## Typography System
 
-- **Name**: String (e.g., "The Robotic Nervous System")
-- **Description**: String (overview of the module's focus)
-- **Chapters**: List<Chapter> (ordered list of chapters in the module)
-- **Learning Objectives**: List<String> (what students should learn)
-- **Prerequisites**: List<String> (knowledge needed before starting)
+### Font Stack
+- **Primary**: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
+- **Code**: `ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 
-### 2. Chapter
-Represents a single documentation page focusing on a specific topic.
+### Hierarchy
+- **h1**: 2.5rem (40px), bold, leading-tight
+- **h2**: 2rem (32px), semibold, leading-snug
+- **h3**: 1.5rem (24px), semibold, leading-normal
+- **h4**: 1.25rem (20px), semibold, leading-normal
+- **Body**: 1rem (16px), normal, leading-relaxed
+- **Small**: 0.875rem (14px), normal, leading-relaxed
 
-- **Title**: String (name of the chapter)
-- **Module**: Module (the module this chapter belongs to)
-- **Content**: String (Markdown content of the chapter)
-- **Learning Objectives**: List<String> (specific objectives for this chapter)
-- **Examples**: List<CodeExample> (code examples in the chapter)
-- **Exercises**: List<Exercise> (practice problems for students)
+## Spacing System
+- **Base unit**: 0.25rem (4px)
+- **Scale**: 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64
 
-### 3. CodeExample
-Represents a code snippet or example project referenced in the book.
+## Animation System
 
-- **Title**: String (brief description of the example)
-- **Language**: String (programming language used)
-- **Code**: String (the actual code content)
-- **Description**: String (explanation of what the code does)
-- **FilePath**: String (path to the external repository)
-- **RelatedChapter**: Chapter (the chapter this example belongs to)
+### Duration Scale
+- **Instant**: 100ms - Micro-interactions
+- **Quick**: 200ms - Hover states
+- **Standard**: 300ms - Component transitions
+- **Slow**: 400ms - Page transitions
 
-### 4. Exercise
-Represents a practice problem or assignment for students.
+### Easing Functions
+- **Standard**: `cubic-bezier(0.4, 0, 0.2, 1)` - General transitions
+- **Emphasized**: `cubic-bezier(0.2, 0.8, 0.2, 1)` - More expressive motion
+- **Decelerated**: `cubic-bezier(0, 0, 0.2, 1)` - Starting motion
+- **Accelerated**: `cubic-bezier(0.4, 0, 1, 1)` - Ending motion
 
-- **Title**: String (brief description of the exercise)
-- **Description**: String (detailed instructions)
-- **Difficulty**: Enum (Beginner, Intermediate, Advanced)
-- **RelatedChapter**: Chapter (the chapter this exercise belongs to)
-- **Solution**: String (suggested solution approach)
-- **ValidationCriteria**: List<String> (how to verify the solution)
+### Animation Properties
+- **Preferred**: `transform`, `opacity` - Hardware accelerated
+- **Avoid**: `width`, `height`, `top`, `left` - Cause layout reflow
 
-### 5. RobotModel
-Represents a humanoid robot model used in the simulation.
+## Component Styling Specifications
 
-- **Name**: String (name of the robot model)
-- **URDFPath**: String (path to URDF file)
-- **Description**: String (overview of the robot)
-- **Joints**: List<Joint> (movable joints of the robot)
-- **Links**: List<Link> (rigid parts of the robot)
-- **Sensors**: List<Sensor> (sensors attached to the robot)
+### Navbar
+- **Height**: 4rem (64px)
+- **Background**: `rgba(0, 0, 0, 0.8)` with backdrop-filter for glass effect
+- **Padding**: 1rem horizontal
+- **Shadow**: Subtle bottom shadow for depth
 
-### 6. Joint
-Represents a joint in the robot model.
+### Sidebar
+- **Width**: 280px on desktop, full screen on mobile
+- **Background**: `#0f172a` (slate-900)
+- **Active Item**: Left border in primary accent color
+- **Hover Effect**: Background color change with transition
 
-- **Name**: String (name of the joint)
-- **Type**: Enum (Revolute, Prismatic, Fixed, etc.)
-- **ParentLink**: Link (the link this joint connects from)
-- **ChildLink**: Link (the link this joint connects to)
-- **Limits**: JointLimits (range of motion constraints)
+### Content Area
+- **Max Width**: 800px for optimal reading
+- **Padding**: 2rem on desktop, 1rem on mobile
+- **Line Height**: 1.7 for body text
+- **Code Blocks**: Dark background with syntax highlighting
 
-### 7. Link
-Represents a rigid part of the robot model.
+### Callout Components
+- **Info**: Left border in cyan, background slight tint
+- **Warning**: Left border in amber, background slight tint
+- **Note**: Left border in emerald, background slight tint
+- **Padding**: 1rem
+- **Border Radius**: 0.25rem
 
-- **Name**: String (name of the link)
-- **Inertial**: InertialProperties (mass, center of mass, inertia)
-- **Visual**: VisualProperties (visual representation)
-- **Collision**: CollisionProperties (collision properties)
+## Responsive Breakpoints
+- **Mobile**: 0px to 768px
+- **Tablet**: 768px to 1024px
+- **Desktop**: 1024px and above
 
-### 8. Sensor
-Represents a sensor attached to the robot.
-
-- **Name**: String (name of the sensor)
-- **Type**: Enum (Camera, LiDAR, IMU, etc.)
-- **Topic**: String (ROS 2 topic where sensor publishes)
-- **MountingLink**: Link (where the sensor is attached on the robot)
-- **Parameters**: Map<String, Object> (sensor-specific parameters)
-
-### 9. SimulationEnvironment
-Represents a simulated world where robots operate.
-
-- **Name**: String (name of the environment)
-- **Description**: String (overview of the environment)
-- **WorldFile**: String (path to Gazebo world file)
-- **Objects**: List<SimulatedObject> (objects in the environment)
-- **RobotSpawnPoints**: List<SpawnPoint> (locations where robots can be placed)
-
-### 10. SimulatedObject
-Represents an object in the simulation environment.
-
-- **Name**: String (name of the object)
-- **ModelPath**: String (path to the object model)
-- **Position**: Position3D (x, y, z coordinates)
-- **Orientation**: Rotation3D (roll, pitch, yaw angles)
-- **Static**: Boolean (whether the object is fixed in place)
-
-### 11. TaskPlan
-Represents a sequence of actions generated by the LLM planner.
-
-- **Id**: String (unique identifier for the plan)
-- **Description**: String (what the plan is supposed to achieve)
-- **Actions**: List<RobotAction> (ordered sequence of actions)
-- **Status**: Enum (Pending, InProgress, Completed, Failed)
-- **GeneratedBy**: String (source of the plan, e.g., LLM name)
-
-### 12. RobotAction
-Represents a single action that the robot should perform.
-
-- **Type**: Enum (MoveTo, Grasp, Speak, Navigate, etc.)
-- **Parameters**: Map<String, Object> (action-specific parameters)
-- **Target**: Position3D (where the action should happen)
-- **Priority**: Integer (order in which actions should be executed)
-- **ValidationCriteria**: List<String> (how to verify the action was successful)
-
-## Relationships
-
-```
-Module 1---* Chapter
-Chapter 1---* CodeExample
-Chapter 1---* Exercise
-RobotModel 1---* Joint
-RobotModel 1---* Link
-RobotModel 1---* Sensor
-SimulationEnvironment 1---* SimulatedObject
-SimulationEnvironment *---* SpawnPoint
-TaskPlan 1---* RobotAction
-```
-
-## State Transitions
-
-### TaskPlan States
-- Pending → InProgress: When the robot starts executing the plan
-- InProgress → Completed: When all actions in the plan are successfully executed
-- InProgress → Failed: When an action in the plan cannot be completed
-
-### RobotAction States
-- Pending → InProgress: When the robot starts executing the action
-- InProgress → Completed: When the action is successfully completed
-- InProgress → Failed: When the action cannot be completed due to errors
+## Accessibility Features
+- **Focus Indicators**: 2px solid primary accent color with 2px offset
+- **Reduced Motion**: Disable all non-essential animations when `prefers-reduced-motion` is set
+- **Contrast Ratios**: Minimum 4.5:1 for normal text, 3:1 for large text
+- **Interactive Elements**: Minimum 44px touch target size
