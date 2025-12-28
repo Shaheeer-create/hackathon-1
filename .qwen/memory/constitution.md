@@ -1,7 +1,6 @@
 # Physical AI & Humanoid Robotics Constitution
 
 ## Purpose
-
 This constitution establishes the foundational principles and guidelines for the Physical AI & Humanoid Robotics project. All development, documentation, and implementation activities must align with these principles.
 
 ## Core Principles

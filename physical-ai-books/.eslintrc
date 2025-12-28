@@ -1,0 +1,15 @@
+{
+  "extends": ["@docusaurus"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "warn"
+  }
+}
