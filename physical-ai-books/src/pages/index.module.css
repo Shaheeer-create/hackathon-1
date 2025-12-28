@@ -1,0 +1,184 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f1f5f9;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem 1rem;
+    min-height: auto;
+    text-align: center;
+  }
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 996px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+.heroText {
+  flex: 1;
+  max-width: 600px;
+}
+
+@media screen and (max-width: 996px) {
+  .heroText {
+    max-width: 100%;
+  }
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 996px) {
+  .heroImage {
+    max-width: 100%;
+  }
+}
+
+.robotIllustration {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(45deg, #06b6d4, #10b981);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.robotIllustration::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.robotIllustration::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 25%;
+  width: 50%;
+  height: 10%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 996px) {
+  .buttons {
+    justify-content: center;
+  }
+}
+
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.delay1 {
+  animation-delay: 0.2s;
+}
+
+.delay2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced button styles */
+.button--primary {
+  background-color: #06b6d4 !important;
+  border: none !important;
+  color: white !important;
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.button--primary:hover {
+  background-color: #0891b2 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.button--secondary {
+  background-color: transparent !important;
+  border: 2px solid #06b6d4 !important;
+  color: #06b6d4 !important;
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.button--secondary:hover {
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
+}
