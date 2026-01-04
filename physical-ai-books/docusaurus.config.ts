@@ -4,6 +4,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// Load environment variables
+require('dotenv').config();
+
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'Building Autonomous Humanoid Robots with ROS 2, Simulation, and LLMs',
@@ -68,6 +71,11 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    './src/plugins/env-plugin.js', // Plugin to expose environment variables to client
+    './src/plugins/webpack-plugin.js', // Plugin to handle Node.js polyfills
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
@@ -79,6 +87,7 @@ const config: Config = {
       logo: {
         alt: 'Physical AI & Humanoid Robotics Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo.svg', // Add dark version of logo if available
       },
       items: [
         {
@@ -89,8 +98,19 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
+          type: 'doc',
+          docId: 'intro',
+          position: 'left',
+          label: 'Get Started',
+        },
+        {
           href: 'https://github.com/Shaheeer-create/hackathon-1',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://discord.gg/robotics',
+          label: 'Discord',
           position: 'right',
         },
       ],
@@ -104,6 +124,14 @@ const config: Config = {
             {
               label: 'Modules',
               to: '/docs/intro',
+            },
+            {
+              label: 'ROS 2 Architecture',
+              to: '/docs/module-1-ros2/chapter-1-architecture',
+            },
+            {
+              label: 'Simulation',
+              to: '/docs/module-2-simulation/chapter-1-gazebo',
             },
           ],
         },
@@ -134,6 +162,10 @@ const config: Config = {
             {
               label: 'GitHub',
               href: 'https://github.com/Shaheeer-create/hackathon-1',
+            },
+            {
+              label: 'Contribute',
+              href: 'https://github.com/Shaheeer-create/hackathon-1/contributing',
             },
           ],
         },

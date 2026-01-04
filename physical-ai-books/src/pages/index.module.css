@@ -8,8 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #f1f5f9;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #e2e8f0;
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -69,23 +69,82 @@
 .robotIllustration {
   width: 100%;
   height: 300px;
-  background: linear-gradient(45deg, #06b6d4, #10b981);
+  background: linear-gradient(45deg, #4c51bf, #9f7aea);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robotHead {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: #f7fafc;
+  border-radius: 50% 50% 40% 40%;
+  top: 20%;
+  z-index: 2;
+  box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.robotBody {
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  top: 40%;
+  z-index: 1;
+  box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.robotArm {
+  position: absolute;
+  width: 20px;
+  height: 80px;
+  background: #cbd5e0;
+  border-radius: 10px;
+  top: 45%;
+  left: 25%;
+  transform-origin: top;
+  animation: moveArm 4s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes moveArm {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
 }
 
 .robotIllustration::before {
   content: '';
   position: absolute;
-  top: 20%;
-  left: 20%;
-  width: 60%;
-  height: 60%;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  top: 15%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: #e53e3e;
   border-radius: 50%;
-  box-sizing: border-box;
+  box-shadow: 0 0 10px #ff6b6b;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 40%, 60%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50%, 55% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
 }
 
 .robotIllustration::after {
@@ -97,6 +156,49 @@
   height: 10%;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+}
+
+/* Dark theme overrides */
+html[data-theme='dark'] .robotIllustration {
+  background: linear-gradient(45deg, #2d3748, #4c51bf);
+}
+
+html[data-theme='dark'] .robotHead {
+  background: #4a5568;
+}
+
+html[data-theme='dark'] .robotBody {
+  background: #2d3748;
+}
+
+html[data-theme='dark'] .robotArm {
+  background: #4a5568;
+}
+
+html[data-theme='dark'] .skillsSection {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+html[data-theme='dark'] .skillsTitle {
+  color: #f7fafc;
+}
+
+html[data-theme='dark'] .skillsSubtitle {
+  color: #a0aec0;
+}
+
+html[data-theme='dark'] .skillCard {
+  background: #2d3748;
+  color: #e2e8f0;
+}
+
+html[data-theme='dark'] .skillTitle {
+  color: #f7fafc;
+}
+
+html[data-theme='dark'] .skillDescription {
+  color: #cbd5e0;
 }
 
 .buttons {
@@ -148,7 +250,7 @@
 
 /* Enhanced button styles */
 .button--primary {
-  background-color: #06b6d4 !important;
+  background-color: #4c51bf !important;
   border: none !important;
   color: white !important;
   padding: 1rem 2rem !important;
@@ -160,15 +262,15 @@
 }
 
 .button--primary:hover {
-  background-color: #0891b2 !important;
+  background-color: #434190 !important;
   transform: translateY(-3px) !important;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 .button--secondary {
   background-color: transparent !important;
-  border: 2px solid #06b6d4 !important;
-  color: #06b6d4 !important;
+  border: 2px solid #4c51bf !important;
+  color: #4c51bf !important;
   padding: 1rem 2rem !important;
   border-radius: 8px !important;
   font-size: 1.1rem !important;
@@ -178,7 +280,88 @@
 }
 
 .button--secondary:hover {
-  background-color: rgba(6, 182, 212, 0.1) !important;
+  background-color: rgba(76, 81, 191, 0.1) !important;
   transform: translateY(-3px) !important;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Skills Section Styles */
+.skillsSection {
+  padding: 5rem 0;
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+@media screen and (max-width: 996px) {
+  .skillsSection {
+    padding: 3rem 0;
+  }
+}
+
+.skillsTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a202c;
+}
+
+.skillsSubtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillCard {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skillCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.skillIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.skillTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.skillDescription {
+  color: #4a5568;
+  line-height: 1.6;
 }

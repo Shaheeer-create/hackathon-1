@@ -15,6 +15,10 @@
         "-y",
         "@playwright/mcp"
       ]
+    },
+    "Neon": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.neon.tech/mcp"]
     }
   },
   "$version": 2
