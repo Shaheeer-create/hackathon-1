@@ -1,0 +1,168 @@
+{
+  "tutorialSidebar": {
+    "title": "تعارف",
+    "items": [
+      {
+        "type": "doc",
+        "id": "intro"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  "module1Sidebar": {
+    "title": "ماڈیول 1: روبوٹک نروس سسٹم (ROS 2)",
+    "items": [
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-1-architecture"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-2-dds"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-3-controllers"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-4-bridging-ai"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-5-urdf"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/chapter-6-kinematics"
+      },
+      {
+        "type": "doc",
+        "id": "module-1-ros2/exercises"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  "module2Sidebar": {
+    "title": "ماڈیول 2: ڈیجیٹل ٹوئن (گیزبو اور یونٹی)",
+    "items": [
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-1-digital-twin-concepts"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-2-gazebo-worlds"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-3-sensor-simulation"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-4-unity-rendering"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-5-robot-interaction"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/chapter-6-ros2-unity-integration"
+      },
+      {
+        "type": "doc",
+        "id": "module-2-digital-twin/exercises"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  "module3Sidebar": {
+    "title": "ماڈیول 3: AI روبوٹ براہن (NVIDIA Isaac™)",
+    "items": [
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-1-isaac-ecosystem"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-2-isaac-sim"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-3-isaac-ros-acceleration"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-4-vslam"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-5-nav2-stack"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/chapter-6-path-planning"
+      },
+      {
+        "type": "doc",
+        "id": "module-3-ai-brain/exercises"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  "module4Sidebar": {
+    "title": "ماڈیول 4: وژن-زبان-ایکشن (VLA)",
+    "items": [
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-1-vla-overview"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-2-voice-commands"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-3-llm-planning"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-4-language-to-actions"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-5-object-detection"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/chapter-6-safety-validation"
+      },
+      {
+        "type": "doc",
+        "id": "module-4-vla/exercises"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  "capstoneSidebar": {
+    "title": "کیپسٹون: خودمختار ہیومنوائڈ",
+    "items": [
+      {
+        "type": "doc",
+        "id": "capstone-autonomous-humanoid/capstone-project"
+      },
+      {
+        "type": "doc",
+        "id": "capstone-autonomous-humanoid/exercises"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  }
+}

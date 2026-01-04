@@ -17,12 +17,27 @@ const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: 'Introduction',
-      items: ['intro'],
+      label: 'Getting Started',
+      collapsible: true,
+      collapsed: false,
+      items: [
+        'intro',
+        {
+          type: 'category',
+          label: 'General Robotics Concepts',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'general-robotics/exercises',
+          ],
+        },
+      ],
     },
     {
       type: 'category',
       label: 'Module 1: The Robotic Nervous System (ROS 2)',
+      collapsible: true,
+      collapsed: false,
       items: [
         'module-1-ros2/chapter-1-architecture',
         'module-1-ros2/chapter-2-dds',
@@ -30,12 +45,22 @@ const sidebars: SidebarsConfig = {
         'module-1-ros2/chapter-4-bridging-ai',
         'module-1-ros2/chapter-5-urdf',
         'module-1-ros2/chapter-6-kinematics',
-        'module-1-ros2/exercises',
+        {
+          type: 'category',
+          label: 'Module 1 Exercises',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'module-1-ros2/exercises',
+          ],
+        },
       ],
     },
     {
       type: 'category',
       label: 'Module 2: The Digital Twin (Gazebo & Unity)',
+      collapsible: true,
+      collapsed: false,
       items: [
         'module-2-digital-twin/chapter-1-digital-twin-concepts',
         'module-2-digital-twin/chapter-2-gazebo-worlds',
@@ -43,12 +68,22 @@ const sidebars: SidebarsConfig = {
         'module-2-digital-twin/chapter-4-unity-rendering',
         'module-2-digital-twin/chapter-5-robot-interaction',
         'module-2-digital-twin/chapter-6-ros2-unity-integration',
-        'module-2-digital-twin/exercises',
+        {
+          type: 'category',
+          label: 'Module 2 Exercises',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'module-2-digital-twin/exercises',
+          ],
+        },
       ],
     },
     {
       type: 'category',
       label: 'Module 3: The AI-Robot Brain (NVIDIA Isaac™)',
+      collapsible: true,
+      collapsed: false,
       items: [
         'module-3-ai-brain/chapter-1-isaac-ecosystem',
         'module-3-ai-brain/chapter-2-isaac-sim',
@@ -56,12 +91,22 @@ const sidebars: SidebarsConfig = {
         'module-3-ai-brain/chapter-4-vslam',
         'module-3-ai-brain/chapter-5-nav2-stack',
         'module-3-ai-brain/chapter-6-path-planning',
-        'module-3-ai-brain/exercises',
+        {
+          type: 'category',
+          label: 'Module 3 Exercises',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'module-3-ai-brain/exercises',
+          ],
+        },
       ],
     },
     {
       type: 'category',
       label: 'Module 4: Vision-Language-Action (VLA)',
+      collapsible: true,
+      collapsed: false,
       items: [
         'module-4-vla/chapter-1-vla-overview',
         'module-4-vla/chapter-2-voice-commands',
@@ -69,15 +114,56 @@ const sidebars: SidebarsConfig = {
         'module-4-vla/chapter-4-language-to-actions',
         'module-4-vla/chapter-5-object-detection',
         'module-4-vla/chapter-6-safety-validation',
-        'module-4-vla/exercises',
+        {
+          type: 'category',
+          label: 'Module 4 Exercises',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'module-4-vla/exercises',
+          ],
+        },
       ],
     },
     {
       type: 'category',
       label: 'Capstone: Autonomous Humanoid',
+      collapsible: true,
+      collapsed: false,
       items: [
         'capstone-autonomous-humanoid/capstone-project',
-        'capstone-autonomous-humanoid/exercises',
+        {
+          type: 'category',
+          label: 'Capstone Exercises',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'capstone-autonomous-humanoid/exercises',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Appendices',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: 'link',
+          label: 'Glossary',
+          href: '/docs/glossary', // Assuming a glossary page exists or will be created
+        },
+        {
+          type: 'link',
+          label: 'Resources & References',
+          href: '/docs/resources', // Assuming a resources page exists or will be created
+        },
+        {
+          type: 'link',
+          label: 'Troubleshooting',
+          href: '/docs/troubleshooting', // Assuming a troubleshooting page exists or will be created
+        },
       ],
     },
   ],

@@ -77,6 +77,7 @@ Icon?
 .env.staging.local
 .env.backup
 .env.example
+.env*
 
 # ROS specific
 *.xml
